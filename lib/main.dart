@@ -1,8 +1,17 @@
 import 'package:estado/pages/pagina1_page.dart';
 import 'package:estado/pages/pagina2_page.dart';
+import 'package:estado/services/usuario_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UsuarioService()),
+        ],
+        child: const MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
